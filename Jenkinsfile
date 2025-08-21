@@ -35,7 +35,7 @@ pipeline {
                 sh """
                 docker stop api || true
                 docker rm api || true
-                docker run -d --name api -p 5000:5000 ${DOCKER_HUB_REPO}:${BUILD_NUMBER}
+                docker run -d --name api --network host -p 5000:5000 ${DOCKER_HUB_REPO}:${BUILD_NUMBER}
                 """
             }
         }
